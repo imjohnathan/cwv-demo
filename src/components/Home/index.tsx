@@ -1,6 +1,7 @@
 import "firebase/firestore";
 import { observer } from "mobx-react-lite";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { appStore } from "../../AppStore";
 import ActivityModal from "../../components/ModalDetail";
 import Calendar from "../../pages/Calendar";
@@ -8,7 +9,6 @@ import { Admin, CartItem, LikeItem } from "../../type";
 import ActivityCard from "../AdminCard";
 import Carousal from "./Carousel";
 import HeroHeader from "./HeroHeader";
-import { toast } from "react-toastify";
 
 const Home: React.FC = observer(() => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -111,14 +111,15 @@ const Home: React.FC = observer(() => {
       <div className="">
         <HeroHeader />
       </div>
-      <div className="w-full bg-white bg-[url('/lat.png')] bg-contain py-10  md:bg-no-repeat">
-        <div className="mb-30 tranition mx-auto flex h-auto  justify-center duration-300 hover:scale-105 sm:px-4  md:px-20">
+      <div style={{'--url': 'url("/lat.png")'}} className="w-full bg-white bg-[var(--url)] bg-contain py-10  md:bg-no-repeat">
+        <div className="mb-30 transition mx-auto flex h-auto  justify-center duration-300 hover:scale-105 sm:px-4  md:px-20">
           <Carousal />
         </div>
       </div>
       <div className="grid grid-cols-2 gap-6 bg-stone-200 py-20 sm:grid-cols-1 sm:px-16  md:grid-cols-2 md:px-20 lg:grid-cols-3 lg:px-12 xl:grid-cols-4 xl:px-40">
-        {appStore.admins.map((admin: Admin) => (
+        {appStore.admins.map((admin: Admin, index) => (
           <ActivityCard
+          key={index}
             admin={admin}
             handleAdminClick={handleAdminClick}
             handleIconClick={handleIconClick}

@@ -172,7 +172,7 @@ const Calendar: React.FC = observer(() => {
             </div>
             <div className="h-40 w-60 overflow-hidden rounded-lg">
               <img
-                src={selectedAdmin.images}
+              src={'//wsrv.nl/?url='+encodeURIComponent(selectedAdmin.images)+'&w=500&output=webp&maxage=1y&q=80'}
                 className="h-full w-full object-cover"
               />
             </div>

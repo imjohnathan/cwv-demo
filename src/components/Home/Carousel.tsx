@@ -1,8 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-
+import left from "../../assets/left.png?w=100&format=webp";
+import right from "../../assets/right.png?w=100&format=webp";
+import center from "./center.png?w=600&format=webp";
+import east from "./east.png?w=600&format=webp";
+import north from "./north.png?w=600&format=webp";
+import south from "./south.png?w=600&format=webp";
 const Carousal: React.FC = () => {
-  const localImages = ["/north.png", "/center.png", "/south.png", "/east.png"];
+  const localImages = [north, center, south, east];
   const [slideDirection, setSlideDirection] = useState("right");
   const imageRoutes: { [key: string]: string } = {
     "/north.png": "/north",
@@ -10,6 +15,24 @@ const Carousal: React.FC = () => {
     "/south.png": "/south",
     "/east.png": "/east",
   };
+  const images = [
+    {
+      image: north,
+      url: "/north",
+    },
+    {
+      image: center,
+      url: "/center",
+    },
+    {
+      image: south,
+      url: "/south.png",
+    },
+    {
+      image: east,
+      url: "/east.png",
+    }
+  ]
   const [activeCampaignIndex, setActiveCampaignIndex] = useState(0);
   const intervalRef = useRef<number | null>(null);
 
@@ -42,9 +65,9 @@ const Carousal: React.FC = () => {
 
   return (
     <div>
-      <div className="flex h-auto cursor-pointer  items-center justify-center overflow-x-hidden  sm:gap-3 md:gap-12   lg:justify-between">
-        <button className=" h-auto  w-1/4 " onClick={handlePrev}>
-          <img src="/left.png" className="h-full w-full" />
+      <div className="relative flex h-auto cursor-pointer  items-center justify-center">
+        <button className="absolute left-[-100px] h-full" onClick={handlePrev}>
+          <img src={left} className="h-full w-full" />
         </button>
 
         <Link to={imageRoutes[localImages[activeCampaignIndex]]}>
@@ -67,8 +90,8 @@ const Carousal: React.FC = () => {
           ))}
         </Link>
 
-        <button className=" h-auto w-1/4 " onClick={handleNext}>
-          <img src="/right.png" className="h-full w-full" />
+        <button className="absolute right-[-100px] h-full" onClick={handleNext}>
+          <img src={right} className="h-full w-full" />
         </button>
       </div>
     </div>

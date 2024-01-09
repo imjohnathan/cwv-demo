@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
 import React from "react";
 import { appStore } from "../../AppStore";
+import cloud from "../../assets/cloud.png?w=1000&format=webp";
+import logo from "../../assets/gravity-logo.png?w=200&format=webp";
+import { default as heroHeader, default as heroHeaderMobile } from "../../assets/hero-header.jpg?w=500&format=webp";
 import { GlobalButton } from "../../components/Button";
 
 const HeroHeader: React.FC = observer(() => {
@@ -21,7 +24,8 @@ const HeroHeader: React.FC = observer(() => {
           <div className="text-center ">
             <div className="mx-auto mb-12 flex h-auto justify-center sm:w-[80px] md:w-[100px]">
               <img
-                src="/gravity-logo.png"
+              loading="lazy"
+                src={logo}
                 className="transition duration-300 ease-in-out hover:rotate-180 hover:scale-150"
               />
             </div>
@@ -148,11 +152,15 @@ const HeroHeader: React.FC = observer(() => {
           </div>
         </div>
         <div className="relative  w-full   bg-white">
-          <img src="/hero-header.png" className=" w-full" />
+          <img
+          loading="lazy"
+          src={heroHeader} 
+          srcSet={`${heroHeaderMobile} 1x, ${heroHeader} 2x`}
+          className=" w-full" />
 
           <div className="absolute left-0 top-0 z-20 w-full ">
             <motion.img
-              src="cloud.png"
+              src={cloud}
               variants={cloudVariants}
               initial="initial"
               animate="animate"

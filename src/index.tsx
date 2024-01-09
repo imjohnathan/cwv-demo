@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import App from "./App";
 import "./index.css";
+import reportWebVitals from './reportWebVitals';
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Failed to find the root element");
 
@@ -15,3 +16,4 @@ root.render(
     <ToastContainer autoClose={800} />
   </BrowserRouter>,
 );
+reportWebVitals(console.log);
