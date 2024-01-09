@@ -7,14 +7,14 @@ import east from "./east.png?w=600&format=webp";
 import north from "./north.png?w=600&format=webp";
 import south from "./south.png?w=600&format=webp";
 const Carousal: React.FC = () => {
-  const localImages = [north, center, south, east];
-  const [slideDirection, setSlideDirection] = useState("right");
-  const imageRoutes: { [key: string]: string } = {
-    "/north.png": "/north",
-    "/center.png": "/center",
-    "/south.png": "/south",
-    "/east.png": "/east",
-  };
+const localImages = [north, center, south, east];
+const [slideDirection, setSlideDirection] = useState("right");
+const imageRoutes: { [key: string]: string } = {
+  "/north.png": "/north",
+  "/center.png": "/center",
+  "/south.png": "/south",
+  "/east.png": "/east",
+};
   const images = [
     {
       image: north,

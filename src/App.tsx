@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import React, { Suspense, useEffect, useLayoutEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useLayoutEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { appStore } from "./AppStore";
 import Cart from "./components/Cart";
@@ -20,21 +20,21 @@ import "./index.css";
 // import UserPost from "./pages/Post/UserPost";
 // import Profile from "./pages/Profile";
 // import UserPage from "./pages/UserPage";
-const About = React.lazy(() => import("./pages/About"));
-const Admin = React.lazy(() => import("./pages/Admin"));
-const Chat = React.lazy(() => import("./pages/Chat"));
-const AdminChat = React.lazy(() => import("./pages/Chat/AdminChat"));
-const Center = React.lazy(() => import("./pages/Directions/Center"));
-const East = React.lazy(() => import("./pages/Directions/East"));
-const North = React.lazy(() => import("./pages/Directions/North"));
-const South = React.lazy(() => import("./pages/Directions/South"));
-const Paint = React.lazy(() => import("./pages/Paint"));
-const Post = React.lazy(() => import("./pages/Post"));
-const UserPost = React.lazy(() => import("./pages/Post/UserPost"));
-const Profile = React.lazy(() => import("./pages/Profile"));
-const UserPage = React.lazy(() => import("./pages/UserPage"));
+const About = lazy(() => import("./pages/About"));
+const Admin = lazy(() => import("./pages/Admin"));
+const Chat = lazy(() => import("./pages/Chat"));
+const AdminChat = lazy(() => import("./pages/Chat/AdminChat"));
+const Center = lazy(() => import("./pages/Directions/Center"));
+const East = lazy(() => import("./pages/Directions/East"));
+const North = lazy(() => import("./pages/Directions/North"));
+const South = lazy(() => import("./pages/Directions/South"));
+const Paint = lazy(() => import("./pages/Paint"));
+const Post = lazy(() => import("./pages/Post"));
+const UserPost = lazy(() => import("./pages/Post/UserPost"));
+const Profile = lazy(() => import("./pages/Profile"));
+const UserPage = lazy(() => import("./pages/UserPage"));
 
-const App: React.FC = observer(() => {
+const App: FC = observer(() => {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -84,42 +84,42 @@ const App: React.FC = observer(() => {
         isLargeScreen={isLargeScreen}
       />
         <Suspense fallback={'loading'}>
-      <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="post" element={<Post />} />
-          <Route path="userpost" element={<UserPost />} />
-          <Route path="paint" element={<Paint />} />
-          <Route
-            path="admin"
-            element={
-              <Admin
-                isSidebarOpen={isSidebarOpen}
-                toggleSidebarAndOverlay={toggleSidebarAndOverlay}
-                isLargeScreen={isLargeScreen}
+          <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="post" element={<Post />} />
+              <Route path="userpost" element={<UserPost />} />
+              <Route path="paint" element={<Paint />} />
+              <Route
+                path="admin"
+                element={
+                  <Admin
+                    isSidebarOpen={isSidebarOpen}
+                    toggleSidebarAndOverlay={toggleSidebarAndOverlay}
+                    isLargeScreen={isLargeScreen}
+                  />
+                }
               />
-            }
-          />
-          <Route path="userpage" element={<UserPage />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="chat" element={<Chat />} />
-          <Route path="about" element={<About />} />
-          <Route
-            path="adminchat"
-            element={
-              <AdminChat
-                toggleSidebarAndOverlay={toggleSidebarAndOverlay}
-                isSidebarOpen={isSidebarOpen}
-                isLargeScreen={isLargeScreen}
-                handleClick={(event: any) => handleClick(event)}
+              <Route path="userpage" element={<UserPage />} />
+              <Route path="cart" element={<Cart />} />
+              <Route path="chat" element={<Chat />} />
+              <Route path="about" element={<About />} />
+              <Route
+                path="adminchat"
+                element={
+                  <AdminChat
+                    toggleSidebarAndOverlay={toggleSidebarAndOverlay}
+                    isSidebarOpen={isSidebarOpen}
+                    isLargeScreen={isLargeScreen}
+                    handleClick={(event: any) => handleClick(event)}
+                  />
+                }
               />
-            }
-          />
-          <Route path="north" element={<North />} />
-          <Route path="south" element={<South />} />
-          <Route path="east" element={<East />} />
-          <Route path="center" element={<Center />} />
-      </Routes>
+              <Route path="north" element={<North />} />
+              <Route path="south" element={<South />} />
+              <Route path="east" element={<East />} />
+              <Route path="center" element={<Center />} />
+          </Routes>
         </Suspense>
       <Footer />
     </>

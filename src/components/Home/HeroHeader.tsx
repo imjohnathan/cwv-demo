@@ -4,7 +4,8 @@ import React from "react";
 import { appStore } from "../../AppStore";
 import cloud from "../../assets/cloud.png?w=1000&format=webp";
 import logo from "../../assets/gravity-logo.png?w=200&format=webp";
-import { default as heroHeader, default as heroHeaderMobile } from "../../assets/hero-header.jpg?w=500&format=webp";
+import heroHeaderMobile from "../../assets/hero-header.jpg?w=500&format=webp";
+import heroHeader from "../../assets/hero-header.jpg?w=800&format=webp";
 import { GlobalButton } from "../../components/Button";
 
 const HeroHeader: React.FC = observer(() => {

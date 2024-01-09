@@ -3,11 +3,13 @@ import { getAuth } from "firebase/auth";
 import { doc, getFirestore, updateDoc } from "firebase/firestore";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { observer } from "mobx-react-lite";
-import p5 from "p5";
+//import p5 from "p5";
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { v4 } from "uuid";
 import { GlobalButton } from "../../components/Button";
+
+
 const Paint: React.FC = observer(() => {
   const sketchRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -18,7 +20,8 @@ const Paint: React.FC = observer(() => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const sketch = (p: p5) => {
+    import("p5").then((p5) => {
+    const sketch = (p: any) => {
       p.setup = () => {
         const canvas = p.createCanvas(500, 500);
         canvasRef.current = canvas.elt;
@@ -40,6 +43,7 @@ const Paint: React.FC = observer(() => {
     if (sketchRef.current && !p5Instance) {
       setP5Instance(new p5(sketch, sketchRef.current));
     }
+  });
   }, []);
 
   const saveCanvasState = () => {

@@ -1,4 +1,4 @@
-import type { ReportCallback, ReportOpts } from 'web-vitals';
+import { onCLS, type ReportCallback, type ReportOpts } from 'web-vitals';
 
 /**
  * This function aims to provide an abstraction layer on Google's web-vitals library.
@@ -16,6 +16,7 @@ async function reportWebVitals(onReport?: ReportCallback, opts?: ReportOpts) {
     onLCP(onReport, opts);
     onTTFB(onReport, opts);
   }
+  onCLS(console.log, {reportAllChanges: true});
 }
 
 export default reportWebVitals;

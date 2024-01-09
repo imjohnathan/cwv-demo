@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { appStore } from "../../AppStore";
 import ActivityModal from "../../components/ModalDetail";
-import Calendar from "../../pages/Calendar";
 import { Admin, CartItem, LikeItem } from "../../type";
 import ActivityCard from "../AdminCard";
 import Carousal from "./Carousel";
@@ -119,13 +118,13 @@ const Home: React.FC = observer(() => {
       <div className="grid grid-cols-2 gap-6 bg-stone-200 py-20 sm:grid-cols-1 sm:px-16  md:grid-cols-2 md:px-20 lg:grid-cols-3 lg:px-12 xl:grid-cols-4 xl:px-40">
         {appStore.admins.map((admin: Admin, index) => (
           <ActivityCard
-          key={index}
+            key={index}
             admin={admin}
             handleAdminClick={handleAdminClick}
             handleIconClick={handleIconClick}
             getGoogleMapsLink={getGoogleMapsLink}
           />
-        ))}
+        )).slice(0, 6)}
 
         {isModalOpen && (
           <div className="background-cover " onClick={toggleModal}></div>
@@ -142,7 +141,7 @@ const Home: React.FC = observer(() => {
         )}
       </div>
       <div className="py-10">
-        <Calendar />
+        {/* <Calendar /> */}
       </div>
     </div>
   );

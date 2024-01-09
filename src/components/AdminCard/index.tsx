@@ -8,6 +8,7 @@ interface ActivityCardProps {
   getGoogleMapsLink: (latitude: string, longitude: string) => string;
   handleAdminClick: (admin: any) => void;
   admin: Admin;
+  isLoading?: boolean;
 }
 const ActivityCard: React.FC<ActivityCardProps> = observer(
   ({ admin, handleAdminClick, handleIconClick, getGoogleMapsLink }) => {
