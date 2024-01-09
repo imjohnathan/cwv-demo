@@ -20,6 +20,7 @@ import Post from "./pages/Post";
 import UserPost from "./pages/Post/UserPost";
 import Profile from "./pages/Profile";
 import UserPage from "./pages/UserPage";
+import reportWebVitals from "./reportWebVitals";
 const App: React.FC = observer(() => {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -110,4 +111,7 @@ const App: React.FC = observer(() => {
   );
 });
 
+reportWebVitals(console.log);
+
 export default App;
+
