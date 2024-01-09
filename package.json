@@ -61,6 +61,7 @@
     "typescript": "^5.3.3",
     "vite": "^4.4.5",
     "vite-imagetools": "^6.2.9",
+    "vite-plugin-chunk-split": "^0.5.0",
     "vite-plugin-image-optimizer": "^1.1.7",
     "vite-plugin-vsharp": "^1.7.3",
     "vite-plugin-webp-generator": "^0.0.5",

@@ -126,7 +126,18 @@ const Home: React.FC = observer(() => {
           />
         )).slice(0, 6)}
 
-        {isModalOpen && (
+{appStore.admins.map((admin: Admin, index) => (
+          <ActivityCard
+            key={index}
+            admin={admin}
+            handleAdminClick={handleAdminClick}
+            handleIconClick={handleIconClick}
+            getGoogleMapsLink={getGoogleMapsLink}
+          />
+        )).slice(0, 6)}
+
+      </div>
+      {isModalOpen && (
           <div className="background-cover " onClick={toggleModal}></div>
         )}
         {isModalOpen && selectedAdmin && (
@@ -139,7 +150,6 @@ const Home: React.FC = observer(() => {
             handleSignUp={handleSignUp}
           />
         )}
-      </div>
       <div className="py-10">
         {/* <Calendar /> */}
       </div>
